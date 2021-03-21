@@ -1,32 +1,21 @@
 import React,{useEffect, useState} from "react";
 
 
-function FavoritesData({price,change_point,change_percentage}){
+function FavoritesData({price,change_point,change_percentage,...rest}){
     return(
         <div>
             <div>Price:{price}</div>
             <div>Profit/loss:{change_point}</div>
             <div>Percent Change:{change_percentage}</div>
         </div>
-        // <table className="table">
-                
-                
-                
-        //         <tbody>
-                    
-        //             <th scope="row">TESLA</th>
-                    
-        //             <td>{price}</td>
-        //             <td>{change_percentage}</td>
-                    
-        //         </tbody>
-        // </table>
+        
     )
 }
 
 function Favorites({price,change_point, change_percentage}){
     
-    const [stocksData, setstocksData]= useState([]);
+    const [stocksData, setstocksData]= useState({});
+    // const [searchTerm,setsearchTerm] = 
         
 
         useEffect(()=>{
@@ -45,7 +34,7 @@ function Favorites({price,change_point, change_percentage}){
         .then((res)=>res.json())
         .then((data) => {
             console.log(data);
-            setstocksData(data);
+            setstocksData(JSON.parse(data));
           
             
         })
@@ -54,28 +43,29 @@ function Favorites({price,change_point, change_percentage}){
 
         });
     }
-        
+  if (!stocksData) return null     
 
-
-        
         
     return(
         <div>
-            {/* <table className="table">
-                <thead>
-                    <tr>
-                    <th scope="col">Symbol</th>
-                    <th scope="col">Company</th>
-                    <th scope="col">Last Price</th>
-                    <th scope="col">Open P&L</th>
-                    </tr>
-                </thead>
-                </table> */}
-            {stocksData.length > 0 && [stocksData].push((stocks)=>
-                <FavoritesData key ="{stocks}"
-                {...stocks}
+            {/* <header>
+                <form onSubmit={handleOnSubmit}>
+                    <input 
+                    type="search" 
+                    className="search" 
+                    placeholder="Search..."
+                    value={searchTerm}
+                    onChange={handleOnChange}
+                    />
+                </form>
+             </header> */}
+            
+            {Object.keys(stocksData).length > 0 && (
+                <FavoritesData
+                {...stocksData}
                 />
-            )}
+            )
+            }
         </div>
 
             
@@ -90,4 +80,3 @@ function Favorites({price,change_point, change_percentage}){
 
 
 export default Favorites;
-
