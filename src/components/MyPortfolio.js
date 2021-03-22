@@ -40,10 +40,10 @@ function MyPortfolioData({price,change_point,change_percentage,...rest}){
           <li className="portfolioList">TESLA</li>
       </td>
       <td>100</td>
-      <td>{(price+change_point)*100}</td>
+      <td>{(price)*100}</td>
       <td>
-          <li className="portfolioList">{price+change_point}</li>
           <li className="portfolioList">{price}</li>
+          <li className="portfolioList">{price-change_point}</li>
       </td>
       <td> 
           <li className="portfolioList">{change_point*100}</li>
