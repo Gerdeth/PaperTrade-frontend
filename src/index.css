@@ -60,7 +60,7 @@ body {
   justify-content: center;
   display:flex;
 }
-.getStarted{
+.getStarted,.log-in{
   background-color: rgb(177, 170, 241);
   height:50px;
   color:white;

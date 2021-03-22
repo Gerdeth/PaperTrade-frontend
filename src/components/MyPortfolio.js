@@ -1,5 +1,6 @@
-import React from "react";
-function MyPortfolio(){
+import React, {useEffect, useState} from "react";
+
+function MyPortfolioData({price,change_point,change_percentage,...rest}){
     return(
         <div className="my_portfolio">
             <div className= "portfolio_header">
@@ -8,6 +9,7 @@ function MyPortfolio(){
                     Portfolio Value:$10000.00
                 </li>
                 <li>
+                    
                     Net P&L : $-30.25
                 </li>
                 <li>
@@ -34,18 +36,18 @@ function MyPortfolio(){
   <tbody>
     <tr>
       <td >
-          <li className="portfolioList">BTG</li>
-          <li className="portfolioList">B2Gold</li>
+          <li className="portfolioList">TSLA</li>
+          <li className="portfolioList">TESLA</li>
       </td>
       <td>100</td>
-      <td>482.00</td>
+      <td>{price*100}</td>
       <td>
-          <li className="portfolioList">4.820</li>
-          <li className="portfolioList">4.620</li>
+          <li className="portfolioList">{price+change_point}</li>
+          <li className="portfolioList">{price}</li>
       </td>
       <td> 
-          <li className="portfolioList">+25.00</li>
-         <li className="portfolioList">+4.33%</li> 
+          <li className="portfolioList">{change_point*100}</li>
+         <li className="portfolioList">{change_percentage}%</li> 
           </td>
     </tr>
    
@@ -57,4 +59,66 @@ function MyPortfolio(){
         </div>
     )
 }
+function MyPortfolio({price,change_point, change_percentage}){
+    
+    const [stocksData, setstocksData]= useState({});
+    const [searchTerm,setsearchTerm] = useState(" ")
+        
+
+        useEffect(()=>{
+            getStocks()
+        },[]);
+
+    
+        const getStocks=(FAVORITES)=>{
+            fetch("https://realstonks.p.rapidapi.com/TSLA", {
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-key": "607c356a15msh664378701f6febfp170069jsn3c9f418ebaf0",
+                "x-rapidapi-host": "realstonks.p.rapidapi.com"
+            }
+        })
+        .then((res)=>res.json())
+        .then((data) => {
+            console.log(data);
+            setstocksData(JSON.parse(data));
+          
+            
+        })
+        .catch(err => {
+            console.error(err);
+
+        });
+    }
+  if (!stocksData) return null     
+
+        
+  return(
+    <div>
+        
+        
+        {Object.keys(stocksData).length > 0 && (
+            <MyPortfolioData
+            {...stocksData}
+            />
+        )
+        }
+    </div>
+
+        
+
+    
+    
+) 
+
+            
+    
+        
+
+    
+       
+};
+
+   
+
 export default MyPortfolio;

@@ -15,7 +15,7 @@ function FavoritesData({price,change_point,change_percentage,...rest}){
 function Favorites({price,change_point, change_percentage}){
     
     const [stocksData, setstocksData]= useState({});
-    // const [searchTerm,setsearchTerm] = 
+    const [searchTerm,setsearchTerm] = useState(" ")
         
 
         useEffect(()=>{
@@ -48,17 +48,7 @@ function Favorites({price,change_point, change_percentage}){
         
     return(
         <div>
-            {/* <header>
-                <form onSubmit={handleOnSubmit}>
-                    <input 
-                    type="search" 
-                    className="search" 
-                    placeholder="Search..."
-                    value={searchTerm}
-                    onChange={handleOnChange}
-                    />
-                </form>
-             </header> */}
+            
             
             {Object.keys(stocksData).length > 0 && (
                 <FavoritesData

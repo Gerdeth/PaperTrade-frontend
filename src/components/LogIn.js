@@ -21,7 +21,7 @@ function LogIn() {
                 <a href="#"> Forgot Password?</a>
             </div>
             <div  className= "log-in-button">
-                <button type="submit" className="btn btn-primary">Sign In</button>
+                <button type="submit" className="log-in"> <a href= "./MyPortfolio">Sign In</a></button>
             </div>
             
         </form>
