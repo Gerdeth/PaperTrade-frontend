@@ -1,14 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-// import{ Navigation, Home }from "./components";
+
 import Navigation from "./components/Navigation";
-import Home from "./components/Home";
-import SignUp from "./components/SignUp";
-import LogIn from "./components/LogIn";
-import Favorites from "./components/Favorites";
-import MyPortfolio from "./components/MyPortfolio";
-//create your first component
+import Home from "./Pages/Home";
+import SignUp from "./Pages/SignUp";
+import LogIn from "./Pages/LogIn";
+import Favorites from "./Pages/Favorites";
+import MyPortfolio from "./Pages/MyPortfolio";
+
 
 
 
