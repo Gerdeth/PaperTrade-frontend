@@ -6,7 +6,7 @@ import Navigation from "./components/Navigation";
 import Home from "./Pages/Home";
 import SignUp from "./Pages/SignUp";
 import LogIn from "./Pages/LogIn";
-import Favorites from "./Pages/Favorites";
+import Browse from "./Pages/Browse";
 import MyPortfolio from "./Pages/MyPortfolio";
 
 
@@ -27,7 +27,7 @@ function App () {
 					<Route path="/home" exact component={()=><Home/>}/>
 					<Route path="/login" exact component={()=><LogIn/>}/>
 					<Route path="/signup" exact component={()=><SignUp/>}/>
-					<Route path="/favorites" exact component={()=><Favorites/>}/>
+					<Route path="/browse" exact component={()=><Browse/>}/>
 					<Route path="/myportfolio" exact component={()=><MyPortfolio/>}/>
 				</Switch>
 			</Router>
