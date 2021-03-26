@@ -1,10 +1,19 @@
 import React,{useEffect, useState} from "react";
+import MoversStore from "../stores/Store";
+import ActionTypes from "../actions/actionTypes";
 
 
-function BrowseData({companyName,change_point,change_percentage,...rest}){
+function BrowseData(){
+    const [topMovers, settopMovers]= useState(MoversStore.getTopMovers)
     return(
         <div>
-            <div className="BrowseTitle">Top Movers</div>
+            <div className="BrowseTitle"><h1>Top Movers</h1></div>
+            <div className="card-body">
+            <h5 className="card-title">Name</h5>
+            <h2 className="card-text">Symbol</h2>
+            <p className= "card-text"> change_percentage</p>
+            
+            </div>
         </div>
         
     )
